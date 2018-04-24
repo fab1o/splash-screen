@@ -1,0 +1,30 @@
+body {
+    animation: random 30s infinite;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-size: cover;
+}
+img {
+  width: 60%;
+}
+@keyframes random {
+  15% {
+    background-color: red;
+  }
+  30% {
+    background-color: yellow;
+  }
+  45% {
+    background-color: green;
+  }
+  60% {
+    background-color: blue;
+  }
+  75% {
+    background-color: black;
+  }
+}
