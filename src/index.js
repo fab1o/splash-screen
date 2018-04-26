@@ -1,10 +1,11 @@
 const Api = {
   apikey: 'WCbj3CTkt4FIUtcdzFkp4vA3ENugMOHl',
   getSize(tag) {
-    const sizes = {
-      '5': 'cover'
-    };
-    return sizes[tag] || 'contain';
+    // const sizes = {
+    //   '5': 'cover'
+    // };
+    // return sizes[tag] || 'contain';
+    return null;
   },
   getRamdonGif(format, tag) {
     const possible = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*-_[]|/;:~,.<>{}";
@@ -54,7 +55,9 @@ function init(interval, format, tag) {
     Api.getRamdonGif(format, tag).then(function (resp) {
       if (resp) {
         document.body.style.backgroundImage = `url(${resp.url})`;
-        document.body.style.backgroundSize = resp.size;
+        if (resp.size) {
+          document.body.style.backgroundSize = resp.size;
+        }  
         init(20 * 60 * 1000, 'webp');
       }
       else {
