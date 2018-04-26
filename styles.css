@@ -8,9 +8,6 @@ body {
 
     background-size: cover;
 }
-img {
-  width: 60%;
-}
 @keyframes random {
   15% {
     background-color: red;

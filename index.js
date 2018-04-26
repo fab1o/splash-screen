@@ -1,4 +1,4 @@
-const apikey = '';
+const apikey = 'WCbj3CTkt4FIUtcdzFkp4vA3ENugMOHl';
 
 function setRandomGif() {
   // this random char selector is to fix a bug in giphy
@@ -6,12 +6,15 @@ function setRandomGif() {
   const possible = "abcdefghijklmnopqrstuvwxyz0123456789";
   const q = possible.charAt(Math.floor(Math.random() * possible.length));
 
+  console.log('q ' + q);
+  
   const url = `https://api.giphy.com/v1/stickers/random?rating=g&tag=${q}&api_key=${apikey}`;
 
   console.log('url ' + url);
 
   return window.fetch(url).then(function (resp) {
     return resp.json().then(function (json) {
+      console.log('images', json.data.images);
       const images = json.data.images;
       let image = {
         width: 0
