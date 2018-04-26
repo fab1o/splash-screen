@@ -1,5 +1,3 @@
-window.resizeTo(1080, 720);
-
 const apikey = '';
 
 function setRandomGif() {
@@ -8,17 +6,47 @@ function setRandomGif() {
   const possible = "abcdefghijklmnopqrstuvwxyz0123456789";
   const q = possible.charAt(Math.floor(Math.random() * possible.length));
 
-  var url = `https://api.giphy.com/v1/stickers/random?rating=g&q=${q}&api_key=${apikey}`;
+  const url = `https://api.giphy.com/v1/stickers/random?rating=g&tag=${q}&api_key=${apikey}`;
 
-  window.fetch(url).then(function (resp) {
-    resp.json().then(function (json) {
-      const gif = json.data.images.fixed_height.webp;
+  console.log('url ' + url);
 
-      document.body.style.backgroundImage = `url(${gif})`;
+  return window.fetch(url).then(function (resp) {
+    return resp.json().then(function (json) {
+      const images = json.data.images;
+      let image = {
+        width: 0
+      };
+      for (let i in images) {
+        if (images[i].webp && images[i].width &&
+          images[i].width > image.width
+        ) {
+          image = images[i];
+        }
+      }
+
+      if (image) {
+        console.log('image', image);
+        const webp = image.webp || image.url;
+        document.body.style.backgroundImage = `url(${webp})`;
+        return true;
+      }
+
+      return false;
     });
   });
 }
 
-window.setInterval(setRandomGif, 30 * 60 * 1000);
+function init(interval) {
+  window.setTimeout(function () {
+    setRandomGif().then(function (resp) {
+      if (resp) {
+        init(20 * 60 * 1000);
+      } else {
+        init(1);
+      }
+    });
 
-setRandomGif();
+  }, interval);
+}
+
+init(1);
