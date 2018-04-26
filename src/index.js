@@ -26,7 +26,7 @@ const Api = {
         }
   
         if (image) {
-          console.log('image', image);
+          console.log('gif', image);
           const url = image[format] || image.url;
           return url;
         }
