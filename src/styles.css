@@ -7,6 +7,7 @@ body {
     justify-content: center;
     background-repeat: no-repeat;
     background-size: contain;
+    background-position-x: center;
 }
 
 @keyframes random {
