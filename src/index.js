@@ -1,18 +1,24 @@
 const Api = {
   apikey: 'WCbj3CTkt4FIUtcdzFkp4vA3ENugMOHl',
-  getRamdonGif(format) {
+  getSize(tag) {
+    const sizes = {
+      '5': 'cover'
+    };
+    return sizes[tag] || 'contain';
+  },
+  getRamdonGif(format, tag) {
     const possible = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*-_[]|/;:~,.<>{}";
-    const q = possible.charAt(Math.floor(Math.random() * possible.length));
+    tag = tag || possible.charAt(Math.floor(Math.random() * possible.length));
   
-    console.log('q ' + q);
+    console.log('tag', tag);
     
-    const requestUrl = `https://api.giphy.com/v1/stickers/random?rating=g&tag=${q}&api_key=${this.apikey}`;
+    const requestUrl = `https://api.giphy.com/v1/stickers/random?rating=g&tag=${tag}&api_key=${this.apikey}`;
   
-    console.log('requestUrl ' + requestUrl);
+    console.log('requestUrl', requestUrl);
 
     return window.fetch(requestUrl).then(function (resp) {
       return resp.json().then(function (json) {
-        console.log('images', json.data.images);
+        // console.log('images', json.data.images);
         const images = json.data.images;
         let image = {
           width: 0
@@ -26,9 +32,14 @@ const Api = {
         }
   
         if (image) {
-          console.log('gif', image);
           const url = image[format] || image.url;
-          return url;
+          console.log('gif', url);
+          const size = Api.getSize(tag);
+
+          return {
+            url,
+            size
+          };
         }
   
         return null;
@@ -38,11 +49,12 @@ const Api = {
 
 };
 
-function init(interval, format) {
+function init(interval, format, tag) {
   window.setTimeout(function () {
-    Api.getRamdonGif(format).then(function (url) {
-      if (url) {
-        document.body.style.backgroundImage = `url(${url})`;
+    Api.getRamdonGif(format, tag).then(function (resp) {
+      if (resp) {
+        document.body.style.backgroundImage = `url(${resp.url})`;
+        document.body.style.backgroundSize = resp.size;
         init(20 * 60 * 1000, 'webp');
       }
       else {

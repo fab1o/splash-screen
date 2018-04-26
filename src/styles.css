@@ -9,7 +9,9 @@ body {
     background-size: contain;
     background-position-x: center;
 }
-
+img {
+  width: 56%;
+}
 @keyframes random {
   15% {
     background-color: red;
