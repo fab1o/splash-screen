@@ -1,5 +1,5 @@
 body {
-    animation: random 30s infinite;
+    animation: colorRandom 30s infinite;
     margin: 0px;
     padding: 0px;
     display: flex;
@@ -7,12 +7,18 @@ body {
     justify-content: center;
     background-repeat: no-repeat;
     background-size: contain;
-    background-position-x: center;
+    background-position: center;
 }
-img {
-  width: 56%;
+.logo {
+  height: 100%;
+  width: 60%;
+  background-image: url(https://s3.amazonaws.com/vimeo-chromecast-prod/static/media/vimeo_white.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin: 0 auto;
 }
-@keyframes random {
+@keyframes colorRandom {
   15% {
     background-color: red;
   }
