@@ -5,15 +5,16 @@
   <title>Splash Screen</title>
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7/dist/polyfill.min.js"></script>
-  <!-- <script type="text/javascript" src="http://webpjs.appspot.com/js/webpjs-0.0.2.min.js"></script> -->
   <script type="text/javascript" src="Splash.js"></script>
 </head>
 
 <body>
-  <div class="logo"></div>
+  <div class="logo center">
+    your logo
+  </div>
   <script>
     function changeBackgroundImage() {
-      Splash.getRandomImageUrl('webp').then(function (imageUrl) {
+      Splash.getRandomImageUrl().then(function (imageUrl) {
         document.body.style.backgroundImage = 'url(' + imageUrl + ')';
       });
     }

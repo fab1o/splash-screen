@@ -98,13 +98,29 @@
 
     /**
      * Changes the image background
-     * @param {tring} format 'webp' or 'gif'
+     * @param {tring} format override format with 'webp' or 'gif' or 'mp4' (mp4 not yet supported)
      * @returns {Promise<String>} image url
      */
     Splash.getRandomImageUrl = function(format) {
+        var fmt = '';
+
+        if (
+            window.chrome !== null &&
+            window.chrome !== undefined &&
+            window.navigator.vendor === 'Google Inc.'
+        ) {
+            fmt = 'webp';
+        } else {
+            fmt = 'gif';
+        }
+
+        if (format) {
+            fmt = format;
+        }
+
         var tag = Giphy.generateRandomTag();
 
-        return Giphy.getLargestImageUrlByWidth(format, tag).then(function(imageUrl) {
+        return Giphy.getLargestImageUrlByWidth(fmt, tag).then(function(imageUrl) {
             return imageUrl;
         });
     };
