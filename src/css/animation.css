@@ -1,0 +1,20 @@
+body {
+    animation: colorRandom 30s infinite;
+}
+@keyframes colorRandom {
+  15% {
+    background-color: red;
+  }
+  30% {
+    background-color: yellow;
+  }
+  45% {
+    background-color: green;
+  }
+  60% {
+    background-color: blue;
+  }
+  75% {
+    background-color: black;
+  }
+}

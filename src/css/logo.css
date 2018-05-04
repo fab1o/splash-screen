@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'BlackRose';
+    src: url('../fonts/BlackRose.ttf');
+}
+.logo {
+    color: #fff;
+    font-size: 120px;
+    font-family:'BlackRose';
+}

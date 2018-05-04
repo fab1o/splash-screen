@@ -3,15 +3,20 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Splash Screen</title>
-  <link rel="stylesheet" type="text/css" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7/dist/polyfill.min.js"></script>
-  <script type="text/javascript" src="Splash.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="src/css/animation.css" />
+  <link rel="stylesheet" type="text/css" href="src/css/logo.css" />
+  <link rel="stylesheet" type="text/css" href="src/css/position.css" />
+
+  <script type="text/javascript" src="src/js/splash.js"></script>
 </head>
 
 <body>
-  <div class="logo center">
-    your logo
+  <div class="logo">
+    fabio
   </div>
+
   <script>
     function changeBackgroundImage() {
       Splash.getRandomImageUrl().then(function (imageUrl) {
