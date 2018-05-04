@@ -7,4 +7,4 @@
 
 # Support
 
-Chrome only.
+<img src="https://cdn0.iconfinder.com/data/icons/flat-round-system/512/chrome_browser-32.png" />
