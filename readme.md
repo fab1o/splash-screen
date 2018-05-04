@@ -1,4 +1,4 @@
-## Funny Splash Screen
+## Funny Splash Screen with Giphy animated gifs
 
 <div align="center">
     <img src="docs/demo.png">
