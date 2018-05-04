@@ -1,14 +1,32 @@
 <html>
+
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Splash Screen</title>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7/dist/polyfill.min.js"></script>
+  <!-- <script type="text/javascript" src="http://webpjs.appspot.com/js/webpjs-0.0.2.min.js"></script> -->
+  <script type="text/javascript" src="Splash.js"></script>
 </head>
+
 <body>
-	<div class="logo"></div>
-	<script type="text/javascript" src="index.js"></script>
-	<script>
-		init(1);
-	</script>
+  <div class="logo"></div>
+  <script>
+    function changeBackgroundImage() {
+      Splash.getRandomImageUrl('webp').then(function (imageUrl) {
+        document.body.style.backgroundImage = 'url(' + imageUrl + ')';
+      });
+    }
+
+    function setTimer(delay) {
+      window.setTimeout(function () {
+        changeBackgroundImage();
+        setTimer(20 * 60 * 1000);
+      }, delay);
+    }
+
+    setTimer(1);
+  </script>
 </body>
 
 </html>

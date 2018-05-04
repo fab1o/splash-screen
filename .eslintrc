@@ -1,0 +1,21 @@
+{
+  "extends": ["plugin:prettier/recommended"],
+  "parserOptions": {
+      "ecmaVersion": 2017,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true,
+        "modules": true
+    }
+  },
+  "env": {
+      "browser": true
+  },
+  "rules": {
+      "max-len": [
+          "error",
+          { "code": 104, "ignoreUrls": true, "ignoreComments": true, "ignoreStrings": true }
+      ],
+      "prettier/prettier": ["error", { "printWidth": 104, "tabWidth": 4, "singleQuote": true }]
+  }
+}

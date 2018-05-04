@@ -3,4 +3,8 @@
 # Configuration
 
 * changes color every few seconds
-* changes random gif in the background every few minutes
+* changes random gif from Giphy in the background every few minutes
+
+# Support
+
+Chrome only.
